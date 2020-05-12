@@ -1,0 +1,12 @@
+{
+  "env": {
+    "ASTRAGAL_SANITY_PREVIEW_SECRET": "@astragal_sanity_preview_secret",
+    "ASTRAGAL_SANITY_API_TOKEN": "@astragal_sanity_api_token",
+    "NEXT_PUBLIC_ASTRAGAL_SANITY_PROJECT_ID": "@next_public_astragal_sanity_project_id"
+  },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_ASTRAGAL_SANITY_PROJECT_ID": "@next_public_astragal_sanity_project_id"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "name": "astragal-next",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "lint:code": "eslint --fix \"components/**/*.{ts,tsx}\" \"lib/**/*.{ts,tsx}\" \"pages/**/*.{ts,tsx}\"",
+    "lint:styles": "stylelint --fix \"components/**/*.css}\" \"lib/**/*.css\" \"pages/**/*.css\"",
+    "lint:format": "prettier --write \"components/**/*.{ts,tsx}\" \"lib/**/*.{ts,tsx}\" \"pages/**/*.{ts,tsx}\"",
+    "lint": "npm run lint:code && npm run lint:styles && npm run lint:format"
+  },
+  "dependencies": {
+    "@sanity/block-content-to-react": "^2.0.7",
+    "@sanity/client": "^1.149.7",
+    "@sanity/image-url": "^0.140.19",
+    "classnames": "^2.2.6",
+    "date-fns": "^2.10.0",
+    "next": "latest",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.10",
+    "@types/node": "^13.13.5",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "@typescript-eslint/eslint-plugin": "^2.32.0",
+    "@typescript-eslint/parser": "^2.32.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb": "18.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react-hooks": "2.5.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
+    "tailwindcss": "^1.4.6",
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run lint:code",
+      "npm run lint:format"
+    ],
+    "*.{css}": "npm run lint:styles"
+  }
+}
