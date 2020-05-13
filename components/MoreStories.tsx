@@ -1,6 +1,6 @@
-import PostPreview from "components/PostPreview"
 import React from "react"
-import type { Post } from "types/common"
+import type { Post } from "../types/common"
+import PostPreview from "./PostPreview"
 
 interface Props {
   posts: Post[]

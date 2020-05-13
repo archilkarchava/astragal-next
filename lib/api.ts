@@ -1,6 +1,7 @@
 import sanityImage from "@sanity/image-url"
-import client, { previewClient } from "lib/sanity"
-import type { Post } from "types/common"
+import type { Post } from "../types/common"
+import client, { previewClient } from "./sanity"
+import { syncCmsImages } from "./utils"
 
 const getUniquePosts = (posts: Post[]) => {
   const slugs = new Set()
@@ -19,18 +20,16 @@ const postFields = `
   date,
   excerpt,
   'slug': slug.current,
-  coverImage,
-  'author': author->{name, picture},
+  'coverImage': '/assets/optimized/' + coverImage.asset->path,
+  'author': author->{name, 'picture': '/assets/optimized/' + picture.asset->path},
 `
 
 const getClient = (preview: boolean) => (preview ? previewClient : client)
 
 export const imageBuilder = sanityImage(client)
 
-export const getPreviewPostBySlug = async (
-  slug: string | string[]
-): Promise<Post> => {
-  const data = await getClient(true).fetch(
+export const getPreviewPostBySlug = async (slug: string | string[]) => {
+  const data = await getClient(true).fetch<Post[]>(
     `*[_type == "post" && slug.current == $slug] | order(date desc){
       ${postFields}
       content
@@ -41,6 +40,7 @@ export const getPreviewPostBySlug = async (
 }
 
 export const getAllPostsWithSlug = async () => {
+  await syncCmsImages()
   const data = await client.fetch<Post[]>(
     `*[_type == "post"]{ 'slug': slug.current }`
   )
@@ -48,6 +48,7 @@ export const getAllPostsWithSlug = async () => {
 }
 
 export const getAllPostsForHome = async (preview: boolean) => {
+  await syncCmsImages()
   const results = await getClient(preview).fetch<
     Post[]
   >(`*[_type == "post"] | order(date desc, _updatedAt desc){
@@ -60,6 +61,7 @@ export async function getPostAndMorePosts(
   slug: string | string[],
   preview: boolean
 ) {
+  await syncCmsImages()
   const curClient = getClient(preview)
   const [post, morePosts] = await Promise.all([
     curClient

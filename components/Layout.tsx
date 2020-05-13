@@ -1,7 +1,7 @@
-import Alert from "components/Alert"
-import Footer from "components/Footer"
-import Meta from "components/Meta"
 import React from "react"
+import Alert from "./Alert"
+import Footer from "./Footer"
+import Meta from "./Meta"
 
 interface Props {
   preview: boolean

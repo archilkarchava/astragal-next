@@ -1,5 +1,4 @@
 import cn from "classnames"
-import { imageBuilder } from "lib/api"
 import Link from "next/link"
 import React from "react"
 
@@ -16,21 +15,11 @@ const CoverImage: React.FC<Props> = ({ title, url, slug }) => {
     <img
       width={2000}
       height={1000}
-      alt={`${title}`}
+      alt={`Cover for ${title}`}
       className={cn("shadow-small", {
         "hover:shadow-medium transition-shadow duration-200": slug,
       })}
-      src={
-        imageBuilder
-          .image(url)
-          .withOptions({
-            auto: "format",
-            quality: 80,
-            height: 500,
-            width: 1000,
-          })
-          .url() ?? ""
-      }
+      src={url}
     />
   )
 

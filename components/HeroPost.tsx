@@ -1,9 +1,9 @@
-import Avatar from "components/Avatar"
-import CoverImage from "components/CoverImage"
-import Date from "components/Date"
 import Link from "next/link"
 import React from "react"
-import type { Post } from "types/common"
+import type { Post } from "../types/common"
+import Avatar from "./Avatar"
+import CoverImage from "./CoverImage"
+import Date from "./Date"
 
 type Props = Omit<Post, "content">
 

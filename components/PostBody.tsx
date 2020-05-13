@@ -1,6 +1,6 @@
 import BlockContent from "@sanity/block-content-to-react"
 import React from "react"
-import type { Post } from "types/common"
+import type { Post } from "../types/common"
 import markdownStyles from "./markdown-styles.module.css"
 
 type Props = Pick<Post, "content">

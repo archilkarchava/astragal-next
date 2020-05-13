@@ -1,5 +1,5 @@
-import { CMS_NAME, CMS_URL } from "lib/constants"
 import React from "react"
+import { CMS_NAME, CMS_URL } from "../lib/constants"
 
 const Intro: React.FC = () => {
   return (

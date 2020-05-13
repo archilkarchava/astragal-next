@@ -1,9 +1,9 @@
-import Avatar from "components/Avatar"
-import CoverImage from "components/CoverImage"
-import Date from "components/Date"
-import PostTitle from "components/PostTitle"
 import React from "react"
-import type { Post } from "types/common"
+import type { Post } from "../types/common"
+import Avatar from "./Avatar"
+import CoverImage from "./CoverImage"
+import Date from "./Date"
+import PostTitle from "./PostTitle"
 
 type Props = Omit<Post, "excerpt" | "slug" | "content">
 

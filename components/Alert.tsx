@@ -1,5 +1,5 @@
-import Container from "components/Container"
 import React from "react"
+import Container from "./Container"
 
 const Alert: React.FC = () => {
   return (

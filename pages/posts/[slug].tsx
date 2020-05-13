@@ -1,19 +1,19 @@
-import Container from "components/Container"
-import Header from "components/Header"
-import Layout from "components/Layout"
-import MoreStories from "components/MoreStories"
-import PostBody from "components/PostBody"
-import PostHeader from "components/PostHeader"
-import PostTitle from "components/PostTitle"
-import SectionSeparator from "components/SectionSeparator"
-import { getAllPostsWithSlug, getPostAndMorePosts } from "lib/api"
-import { CMS_NAME } from "lib/constants"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import ErrorPage from "next/error"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import React from "react"
-import type { Post } from "types/common"
+import Container from "../../components/Container"
+import Header from "../../components/Header"
+import Layout from "../../components/Layout"
+import MoreStories from "../../components/MoreStories"
+import PostBody from "../../components/PostBody"
+import PostHeader from "../../components/PostHeader"
+import PostTitle from "../../components/PostTitle"
+import SectionSeparator from "../../components/SectionSeparator"
+import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api"
+import { CMS_NAME } from "../../lib/constants"
+import type { Post } from "../../types/common"
 
 interface Props {
   post: Post
@@ -85,7 +85,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
           slug: post.slug,
         },
       })) || [],
-    fallback: true,
+    fallback: false,
   }
 }
 
